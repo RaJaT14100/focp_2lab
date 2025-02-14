@@ -1,6 +1,10 @@
 #include <iostream>
 #include<limits> 
+#include<limits.h>
 #include<cmath>
+#include<cstdlib>
+#include<ctime>
+#include <iomanip>
 using namespace std;
 //q16->
 
@@ -337,51 +341,314 @@ int main() {
 
 //q27->
 
-int main(){
-cout << "Enter the starting number: ";
-cin >> start;
-cout << "Enter the ending number: ";
-cin >> end;
-
-cout << "Armstrong numbers between " << start << " and " << end << " are:"<<endl;
-
-
-for (int num = start; num <= end; num++) {
-    int sum = 0, temp = num, digits = 0;
-
-    
-int temp2 = num;
-while (temp2 > 0) {
-    temp2 /= 10;
-    digits++;
+/*int countDigits(int num) {
+    int count = 0;
+    while (num > 0) {
+        num /= 10;
+        count++;
     }
+    return count;
+}
 
-    
-    temp = num;
+
+bool isArmstrong(int num) {
+    int sum = 0, temp = num;
+    int digits = countDigits(num);
     while (temp > 0) {
-    int digit = temp % 10;
-    sum += pow(digit, digits);
-    temp /= 10;
+        int digit = temp % 10;
+        sum += pow(digit, digits);
+        temp /= 10;
+    }
+    return sum == num;
+}
+
+int main() {
+    int start, end;
+    cout << "Enter the range (start and end): ";
+    cin >> start >> end;
+
+    cout << "Armstrong numbers in the given range: ";
+    for (int num = start; num <= end; num++) {
+        if (isArmstrong(num)) {
+            cout << num << " ";
+        }
+    }
+    
+    cout << endl;
+    return 0;
+}*/
+
+//q28->
+
+/*int main() {
+    srand(time(0));
+    int number = rand() % 100 + 1; 
+    int guess, attempts = 5;
+
+    cout << "Guess the number (between 1 and 100). You have " << attempts << " attempts." << endl;
+    
+    while (attempts > 0) {
+        cout << "Enter your guess: ";
+        cin >> guess;
+
+        if (guess == number) {
+            cout << "Congratulations! You guessed the number correctly." << endl;
+            return 0;
+        } else if (guess > number) {
+            cout << "Too high! Try again." << endl;
+        } else {
+            cout << "Too low! Try again." << endl;
+        }
+        
+        attempts--;
+        if (attempts > 0) {
+            cout << "Attempts remaining: " << attempts << endl;
+        }
+    }
+    
+    cout << "Sorry, you've run out of attempts. The number was " << number << "." << endl;
+    return 0;
+}*/
+
+//q29->
+
+
+/*int main() {
+    int num = 51; 
+
+    while (num % 7 != 0) {
+        num++; 
+    }
+
+    std::cout << "The first number greater than 50 that is divisible by 7 is: " << num << std::endl;
+
+
+    return 0;
+}*/
+
+//q30->
+
+/*int main() {
+    int sum = 0;
+
+    for (int num = 1; num <= 500; num++) {
+        if (num % 3 == 0 && num % 7 == 0) {
+            continue; 
+        }
+
+        if (sum + num > 1000) {
+            break; 
+        }
+
+        cout << num << " ";
+        sum += num;
+    }
+
+    cout << "\nSum of printed numbers: " << sum << std::endl;
+    return 0;
+}*/
+
+//q31->
+
+/*int reverseNumber(int num) {
+    int reversed = 0;
+    while (num > 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    return reversed;
+}
+
+bool isPalindrome(int num) {
+    return num == reverseNumber(num);
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    while (true) {
+        int reversed = reverseNumber(num);
+        cout << "Reversed Number: " << reversed << endl;
+
+        if (isPalindrome(reversed)) {
+            cout << "Palindrome reached! Terminating..." << endl;
+            break;
+    }
+
+    num = num + reversed;
+
+}
+    return 0;
+}*/
+
+//q32->
+
+/*int findSecondLargest(int arr[], int size) {
+    if (size < 2) {
+        cout << "Array must have at least two elements." << endl;
+        return -1;
+    }
+
+    int largest = arr[0];
+    int secondLargest = INT_MIN;
+    bool foundSecond = false;
+
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+            foundSecond = true;
+        } else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+            foundSecond = true;
+        }
+    }
+
+    return foundSecond ? secondLargest : -1;
+}
+
+int main() {
+    int size;
+
+    cout << "Enter the size of the array: ";
+    cin >> size;
+
+    if (size < 2) {
+        cout << "Array must contain at least two elements!" << endl;
+        return 0;
+    }
+
+    int *arr = new int[size];
+
+    cout << "Enter " << size << " elements: ";
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+
+    int secondLargest = findSecondLargest(arr, size);
+
+    if (secondLargest == -1) {
+        cout << "No second largest element found." << endl;
+    } else {
+        cout << "The second largest element is: " << secondLargest << endl;
+    }
+
+    delete[] arr;
+    return 0;
+}*/
+
+//q33->
+
+/*bool hasExactBinaryRepresentation(double num) {
+    
+    long long intPart = static_cast<long long>(num);
+    double fracPart = num - intPart;
+
+    if (fracPart == 0.0) return true;
+
+    
+    while (fracPart > 0.0) {
+        fracPart *= 2;
+        if (fracPart >= 1.0) {
+            fracPart -= 1.0;
+        }
+
+        
+        static int iterationLimit = 100; 
+        if (--iterationLimit == 0) return false;
+    }
+
+    return true;
+}
+
+int main() {
+    double num;
+    cout << "Enter a floating-point number: ";
+    cin >> num;
+
+    cout << fixed << setprecision(15); 
+
+    if (hasExactBinaryRepresentation(num)) {
+        cout << num << " can be exactly represented in binary." << endl;
+    } else {
+        cout << num << " cannot be exactly represented in binary." << endl;
+        cout << "Explanation: Its fractional part has a denominator that is not a power of 2." << endl;
+    }
+
+    return 0;
+}*/
+
+//q32->
+
+/*int main() {
+    int rows, cols;
+
+    cout << "Enter the number of rows: ";
+    cin >> rows;
+    cout << "Enter the number of columns: ";
+    cin >> cols;
+
+    int arr[rows][cols]; 
+
+    cout << "Enter the elements of the array:" << endl;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cin >> arr[i][j];
+        }
     }
 
     
-    if (sum == num) {
-    cout << num << " ";
+    cout << "\nFormatted 2D Array Table:\n";
+    cout << "------------------------\n";
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << setw(6) << arr[i][j] << " "; 
+        }
+        cout << endl;
     }
+
+    cout << "------------------------\n";
+
+    return 0;
+}*/
+
+//q35->
+
+int computeGCD(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
 }
 
-cout << endl;
+int computeLCM(int a, int b) {
+    return (a / computeGCD(a, b)) * b;  
+}
 
-return 0;
+int main() {
+    int num1, num2;
+
+    cout << "Enter two integers: ";
+    cin >> num1 >> num2;
+
+    if (num1 == 0 || num2 == 0) {
+        cout << "LCM and GCD are not defined for zero." << endl;
+        return 0;
+    }
+
+    int gcd = computeGCD(num1, num2);
+    int lcm = computeLCM(num1, num2);
+
+    cout << "GCD of " << num1 << " and " << num2 << " is: " << gcd << endl;
+    cout << "LCM of " << num1 << " and " << num2 << " is: " << lcm << endl;
+
+    return 0;
 }
 
 
 
-
-
-
-
-
-   
-   
-    
