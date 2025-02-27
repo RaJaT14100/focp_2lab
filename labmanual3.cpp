@@ -2,6 +2,7 @@
 #include <string>
 #include <cmath>
 #include <cstdarg>
+#include <limits.h>
 using namespace std;
 
 //q1->
@@ -27,7 +28,7 @@ int main() {
 
 /*int factorial(int n) {
     if (n < 0) {
-        cerr << "Error: Factorial of a negative number is undefined." << endl;
+        cout     << "Error: Factorial of a negative number is undefined." << endl;
         return -1; 
     }
     int result = 1;
@@ -298,7 +299,7 @@ public:
         return length * width;
     }
 
-    double area(double radius) {
+    double area(double radius) {4
         return 3.14159 * radius * radius;
     }
 };
@@ -370,7 +371,7 @@ int main() {
 
 //q15->
 
-int sum(int count, ...) {
+/*int sum(int count, ...) {
     va_list args;  
     va_start(args, count);  
 
@@ -390,7 +391,390 @@ int main() {
     cout << "Sum of 1, 2, 3, 4, 5: " << sum(5, 1, 2, 3, 4, 5) << endl;
 
     return 0;
+}*/
+
+//q16->
+
+/*int findLargest(int count, ...) {
+    va_list args;
+    va_start(args, count);
+    
+    int max = va_arg(args, int); 
+    
+    for (int i = 1; i < count; i++) {
+        int num = va_arg(args, int);
+        if (num > max) {
+            max = num;
+        }
+    }
+    
+    va_end(args);
+    return max;
 }
+
+int main() {
+    cout << "Largest: " << findLargest(5, 10, 25, 7, 199, 3) << endl;
+    return 0;
+}*/
+
+//q17->
+
+/*void concatStrings(int count, ...) {
+    va_list args;
+    va_start(args, count);
+    
+    string result;
+    for (int i = 0; i < count; i++) {
+        const char* str = va_arg(args, const char*);
+        result += str;
+    }
+    
+    va_end(args);
+    cout << "Concatenated String: " << result << endl;
+}
+
+int main() {
+    concatStrings(3, "Hello, ", "world", "!");
+    return 0;
+}*/
+
+//q18->
+
+/*int gcd(int a, int b) {
+    return (b == 0) ? a : gcd(b, a % b);
+}
+
+int main() {
+    int num1 = 56, num2 = 98;
+    std::cout << "GCD of " << num1 << " and " << num2 << " is: " << gcd(num1, num2) << std::endl;
+    
+    return 0;
+}*/
+
+//q19->
+
+
+
+/*int factorial(int n) {
+    return (n <= 1) ? 1 : n * factorial(n - 1);
+}
+
+int main() {
+    
+    
+    int num = 6;
+    cout << "Factorial of " << num << " is: " << factorial(num) << endl;
+    
+    return 0;
+}*/
+
+//q20->
+
+/*int fibonacci(int n) {
+    return (n <= 1) ? n : fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int num1 = 56, num2 = 98;
+    cout << "GCD of " << num1 << " and " << num2 << " is: " << gcd(num1, num2) << endl;
+    
+    int num = 5;
+    cout << "Factorial of " << num << " is: " << factorial(num) << endl;
+    
+    int fibNum = 6;
+    cout << "Fibonacci number at position " << fibNum << " is: " << fibonacci(fibNum) << endl;
+    
+    return 0;
+}*/
+
+//q21->
+
+/*string reverseString(string str) {
+    if (str.empty()) {
+        return "";
+    }
+    return str.back() + reverseString(str.substr(0, str.size() - 1));
+}
+
+int main() {
+    string input = "hello";
+    cout << "Reversed string: " << reverseString(input) << endl;
+    return 0;
+}*/
+
+//q22->
+
+/*int sumOfNaturalNumbers(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    return n + sumOfNaturalNumbers(n - 1);
+}
+
+int main() {
+    int n = 5;
+    cout << "Sum of first " << n << " natural numbers: " << sumOfNaturalNumbers(n) << endl;
+    return 0;
+}*/
+
+//q23->
+
+/*int power(int base, int exp) {
+    if (exp == 0) {
+        return 1; 
+    }
+    return base * power(base, exp - 1);
+}
+
+int main() {
+    int base = 2, exp = 3;
+    cout << base << "^" << exp << " = " << power(base, exp) << endl;
+    return 0;
+}*/
+
+//q24->
+
+/*void swapNumbers(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    cout << "Before swap: x = " << x << ", y = " << y << endl;
+    
+    swapNumbers(x, y);
+    
+    cout << "After swap: x = " << x << ", y = " << y << endl;
+    return 0;
+}*/
+
+//q25->
+
+/*int sumArray(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+int main() {
+    int size;
+    
+    cout << "Enter the size of the array: ";
+    cin >> size;
+    
+    int arr[size]; 
+    
+    cout << "Enter " << size << " elements: ";
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+    
+    cout << "Sum of array elements: " << sumArray(arr, size) << endl;
+    
+    return 0;
+}*/
+
+//q26->
+
+/*int findMax(int arr[], int size) {
+    int maxVal = arr[0]; 
+    
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > maxVal) {
+            maxVal = arr[i]; 
+        }
+    }
+    return maxVal;
+}
+
+int main() {
+    int size;
+    
+    cout << "Enter the size of the array: ";
+    cin >> size;
+    
+    int arr[size]; 
+    
+    cout << "Enter " << size << " elements: ";
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+    
+    cout << "Maximum element: " << findMax(arr, size) << endl;
+    
+    return 0;
+}*/
+
+//q27->
+
+/*void findSecondLargest(int arr[], int size, int &secondLargest) {
+    if (size < 2) {
+        cout << "Array must have at least two elements." << endl;
+        secondLargest = INT_MIN; 
+        return;
+    }
+
+    int largest = INT_MIN;
+    secondLargest = INT_MIN;
+
+    for (int i = 0; i < size; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest; 
+            largest = arr[i]; 
+        } else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i]; 
+        }
+    }
+
+    if (secondLargest == INT_MIN) {
+        cout << "No second largest element found (all elements might be equal)." << endl;
+    }
+}
+
+int main() {
+    int size;
+    
+    cout << "Enter the size of the array: ";
+    cin >> size;
+    
+    int arr[size]; 
+    
+    cout << "Enter " << size << " elements: ";
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+    
+    int secondLargest;
+    findSecondLargest(arr, size, secondLargest);
+
+    if (secondLargest != INT_MIN) {
+        cout << "Second largest element: " << secondLargest << endl;
+    }
+
+    return 0;
+}*/
+
+//q28->
+
+/*int* generateFibonacci(int n) {
+    if (n <= 0) {
+        return nullptr; 
+    }
+
+    int* fibArray = new int[n]; 
+
+    
+    if (n >= 1) fibArray[0] = 0;
+    if (n >= 2) fibArray[1] = 1;
+
+    
+    for (int i = 2; i < n; i++) {
+        fibArray[i] = fibArray[i - 1] + fibArray[i - 2];
+    }
+
+    return fibArray; 
+}
+
+int main() {
+    int n;
+    cout << "Enter the number of Fibonacci numbers to generate: ";
+    cin >> n;
+
+    int* fibArray = generateFibonacci(n);
+
+    if (fibArray) {
+        cout << "Fibonacci sequence: ";
+        for (int i = 0; i < n; i++) {
+            cout << fibArray[i] << " ";
+        }
+        cout << endl;
+
+        delete[] fibArray; 
+    } else {
+        cout << "Invalid input. Please enter a positive integer." << endl;
+    }
+
+    return 0;
+}*/
+
+//q29->
+
+/*struct Student {
+    string name;
+    int marks;
+};
+
+
+void displayStudents(Student arr[], int size) {
+    cout << "\nStudent Details:\n";
+    for (int i = 0; i < size; i++) {
+        cout << "Name: " << arr[i].name << ", Marks: " << arr[i].marks << endl;
+    }
+}
+
+int main() {
+    int size;
+
+    cout << "Enter the number of students: ";
+    cin >> size;
+
+    Student students[size]; 
+
+
+    for (int i = 0; i < size; i++) {
+        cout << "Enter name of student " << i + 1 << ": ";
+        cin.ignore(); 
+        getline(cin, students[i].name);
+        cout << "Enter marks of student " << i + 1 << ": ";
+        cin >> students[i].marks;
+    }
+
+
+    displayStudents(students, size);
+
+    return 0;
+}*/
+
+//q30->
+
+/*void doubleArray(int (&arr)[6]) {
+    for (int i = 0; i < 6; i++) {
+        arr[i] *= 2; 
+    }
+}
+int main() {
+    int arr[6];
+    cout << "Enter 6 elements: ";
+    for (int i = 0; i < 6; i++) {
+        cin >> arr[i];
+    }
+    doubleArray(arr);
+
+    cout << "Doubled array: ";
+    for (int i = 0; i < 6; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
